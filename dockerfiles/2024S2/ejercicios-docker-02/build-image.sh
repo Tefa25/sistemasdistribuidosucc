@@ -1,0 +1,1 @@
+docker build -t tefa25/ejercicio-docker-02:latest .
