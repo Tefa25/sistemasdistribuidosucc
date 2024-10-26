@@ -1,0 +1,1 @@
+docker build -t tefa25/app-cliente-java:latest .

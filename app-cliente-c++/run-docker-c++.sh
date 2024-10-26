@@ -1,0 +1,1 @@
+docker run --rm tefa25/app-cliente-cpp
