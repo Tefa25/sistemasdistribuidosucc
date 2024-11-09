@@ -1,0 +1,50 @@
+services:
+  db-e11evenn:
+    container_name: e11evenn-postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_DB: e11evenn
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: >
+      bash -c "
+        docker-entrypoint.sh postgres & 
+        until pg_isready -U postgres -d e11evenn; do 
+          echo 'Esperando que PostgreSQL esté listo...';
+          sleep 2; 
+        done;
+        echo 'Base de datos e11evenn lista. Ejecutando comandos SQL.'; 
+        psql -U postgres -d e11evenn -c \"CREATE TABLE IF NOT EXISTS e11evenn (id SERIAL PRIMARY KEY, name VARCHAR(100), value INTEGER);\"; 
+        psql -U postgres -d e11evenn -c \"INSERT INTO e11evenn (name, value) VALUES ('Item1', 10), ('Item2', 20), ('Item3', 30);\"; 
+        wait"
+        
+  app:
+    container_name: e11evenn-app
+    build: .
+    depends_on:
+      - db-e11evenn
+    ports:
+      - "8000:8000"
+
+  web:
+    container_name: e11evenn-nginx
+    image: nginx:latest
+    depends_on:
+      - app
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+
+volumes:
+  postgres_data:
+
+networks:
+  docker-compose_default:
+    driver: bridge
