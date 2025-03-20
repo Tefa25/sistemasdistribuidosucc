@@ -29,8 +29,8 @@
 			"configuration": {
 				"host": "localhost",
 				"port": "5432",
-				"database": "postgres",
-				"url": "jdbc:postgresql://localhost:5432/postgres",
+				"database": "ventas_db",
+				"url": "jdbc:postgresql://localhost:5432/ventas_db",
 				"configurationType": "MANUAL",
 				"home": "postgresql_client",
 				"type": "dev",
