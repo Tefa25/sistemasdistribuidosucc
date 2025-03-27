@@ -1,16 +1,16 @@
 services:
   postgres:
     image: postgres:13
-    container_name: postgres_db_ventas
+    container_name: postgres_db_aeropuerto
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: ventas_db
+      POSTGRES_DB: aeropuerto_db
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql  # Montar el script SQL
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - db_network
  
