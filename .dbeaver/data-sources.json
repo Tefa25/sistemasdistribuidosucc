@@ -1,36 +1,16 @@
 {
 	"folders": {},
 	"connections": {
-		"oracle_thin-1928b19b618-7ebe4a16081528fc": {
-			"provider": "oracle",
-			"driver": "oracle_thin",
-			"name": "ORCL",
-			"save-password": true,
-			"configuration": {
-				"host": "localhost",
-				"port": "1521",
-				"database": "ORCL",
-				"url": "jdbc:oracle:thin:@//localhost:1521/ORCL",
-				"configurationType": "MANUAL",
-				"type": "dev",
-				"closeIdleConnection": true,
-				"provider-properties": {
-					"@dbeaver-connection-type@": "BASIC",
-					"@dbeaver-sid-service@": "SERVICE"
-				},
-				"auth-model": "oracle_native"
-			}
-		},
-		"postgres-jdbc-192981eb6a5-457f71815651eb44": {
+		"postgres-jdbc-1962c4ffeff-6e09fa87036c64eb": {
 			"provider": "postgresql",
 			"driver": "postgres-jdbc",
-			"name": "postgres",
+			"name": "tienda_db",
 			"save-password": true,
 			"configuration": {
 				"host": "localhost",
 				"port": "5432",
-				"database": "ventas_db",
-				"url": "jdbc:postgresql://localhost:5432/ventas_db",
+				"database": "tienda_db",
+				"url": "jdbc:postgresql://localhost:5432/tienda_db",
 				"configurationType": "MANUAL",
 				"home": "postgresql_client",
 				"type": "dev",
